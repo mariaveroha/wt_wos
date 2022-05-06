@@ -1,57 +1,46 @@
-var a = '123'; // строковая переменная
-var b = 123; // числовой
-var c = [4, 5, 6, 7, 8]; // массив
-c[2]; // =6
-var d = {
-    number: 3,
-    number2: 4,
-    login_key: 33
-};
-d.number2; // =4
-d.login_key; // =33
+let serials = [
+    {'name': 'Чикатило'},
+    {'name': 'Чикаго'},
+];
+let search = document.getElementById('search');
+search.addEventListener('input', function () {
+    //this = search
+    let query = this.value.toLowerCase(); //чика
+    const data = new FormData();
+    data.append('q', query);
+    //fetch('http://d7mxgn3kr8v4.net/engine/ajax/search.php?q='+encodeURIComponent(query), {
+    fetch('http://d7mxgn3kr8v4.net/engine/ajax/search.php', {
+        method: 'POST',
+        body: data,
+        mode: 'no-cors'
+    })
+        .then(function (response) {
+            return response.text();
+        })
+        .then(function (data) {
+            console.log(data);
+        });
+    // serials.forEach(function (item) {
+    //     if (item.name.toLowerCase().includes(query)) {
+    //         console.log(item.name);
+    //     }
+    // })
+});
 
-var e = a+b;
-a = a+b;
-b = a+b;
-
-// console.log(d); // выводит на экран
-// alert('ALERT');
-
-//==============
-
-/*
-
-Длинный 
-комментарий
-
-*/
-
-var number1 = 100;
-var number2 = 200;
-var number3 = 300;
-
-// && = и
-// || = или
-if(number1 > number2 && number1 > number3) {
-
-} else if (number2 > number1 && number2 > number3) {
-    
-} else if (number3 > number1 && number3 > number2) {
-    
-}
-
-
-var number4 = 5;
-var number5 = 66;
-var number6 = 7;
-var check = (number5 > 5 || number5 < 7); //true
-if(number5 > 5 || number5 < 7) {
-    console.log('yappi');
-}
-
-var bool1 = true; // булевы переменные
-var bool2 = false;
-
-if(!(2 > 1)) {
-    console.log('123');
-}
+// fetch(that.getAttribute('formaction'), {
+//     headers: {
+//         'X-CSRF-TOKEN': document.querySelector('[name="csrf_token"]').content
+//     },
+//     method: 'POST',
+//     body: new FormData(document.getElementById('product'))
+// })
+//     .then(response => {
+//         return response.json()
+//         //window.location.reload();
+//     })
+//     .then(data => {
+//         console.log(data);
+//         if (data.status === true) {
+//             window.location.href = data.url;
+//         }
+//     });
