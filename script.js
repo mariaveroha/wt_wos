@@ -18,14 +18,21 @@ let api = {
 
 let innerHtml = '';
 api.data.forEach(function (item) {
-   innerHtml = innerHtml + '<div class="col-3"><div class="card my-4" style="width: 12rem;"><img src="'+item.img+'" class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title"></h5>' +
-       '<p class="card-text"> <b>'+item.title+'</b><br> '+item.year+' '+item.country+', Фантастика</p>' +
-       '<a href="#" class="btn btn-primary">Смотреть</a>' +
-       '</div>' +
-       '</div>' +
-       '</div>'
+    let outerDiv = document.createElement('div');
+    outerDiv.classList.add('col-3');
+    let divCard = document.createElement('div');
+    divCard.classList.add('card');
+    divCard.style.width = '12rem';
+    outerDiv.append(divCard);
+    document.getElementById('main_wrapper').append(outerDiv);
+   // innerHtml = innerHtml + '<div class="col-3"><div class="card my-4" style="width: 12rem;"><img src="'+item.img+'" class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title"></h5>' +
+   //     '<p class="card-text"> <b>'+item.title+'</b><br> '+item.year+' '+item.country+', Фантастика</p>' +
+   //     '<a href="#" class="btn btn-primary">Смотреть</a>' +
+   //     '</div>' +
+   //     '</div>' +
+   //     '</div>'
 });
-document.getElementById('main_wrapper').innerHTML = innerHtml;
+//document.getElementById('main_wrapper').innerHTML = innerHtml;
 
 // let serials = [
 //     {'name': 'Чикатило'},
