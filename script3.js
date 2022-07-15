@@ -1,4 +1,7 @@
 
+
+
+
 let name = 'Vlad';
 
 let func = function(name) {
